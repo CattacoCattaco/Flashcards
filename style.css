@@ -2,3 +2,31 @@ html {
   height: 100%;
   width: 100%;
 }
+
+body {
+  background-color: #30075f;
+  margin: 0;
+}
+
+#flashcard {
+  --height: min(45vh, calc(3 / 5 * 40vw));
+  --width: min(40vw, calc(5 / 3 * 45vh));
+  position: absolute;
+  top: calc((100vh - var(--height)) / 2);
+  left: calc((100vw - var(--width)) / 2);
+  height: var(--height);
+  width: var(--width);
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: white;
+}
+
+#flashcard-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: 24px;
+}
