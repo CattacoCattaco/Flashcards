@@ -1,3 +1,8 @@
+:root {
+  --flashcard-height: min(45vh, calc(3 / 5 * 40vw));
+  --flashcard-width: min(40vw, calc(5 / 3 * 45vh));
+}
+
 html {
   height: 100%;
   width: 100%;
@@ -9,13 +14,11 @@ body {
 }
 
 #flashcard {
-  --height: min(45vh, calc(3 / 5 * 40vw));
-  --width: min(40vw, calc(5 / 3 * 45vh));
   position: absolute;
-  top: calc((100vh - var(--height)) / 2);
-  left: calc((100vw - var(--width)) / 2);
-  height: var(--height);
-  width: var(--width);
+  left: calc((100vw - var(--flashcard-width)) / 2);
+  top: calc((100vh - var(--flashcard-height)) / 2);
+  width: var(--flashcard-width);
+  height: var(--flashcard-height);
   border: 2px solid black;
   border-radius: 10px;
   background-color: white;
@@ -43,4 +46,30 @@ body {
   background: transparent;
   padding: 0;
   border: 0;
+  border-radius: 10px;
+}
+
+#button-row {
+  position: absolute;
+  left: calc((100vw - var(--flashcard-width)) / 2);
+  bottom: calc((100vh - var(--flashcard-height)) / 2 - 10vh);
+  width: var(--flashcard-width);
+  height: 8vh;
+}
+
+.button-row-button {
+  position: absolute;
+  width: 8vh;
+  height: 8vh;
+  border-radius: 4vh;
+  border: 1px solid black;
+  padding: 0;
+}
+
+#prev-button {
+  left: 2vw;
+}
+
+#next-button {
+  right: 2vw;
 }

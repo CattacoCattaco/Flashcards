@@ -12,13 +12,39 @@ let cards = [
     },
 ];
 
+let sequence = [];
+
 window.onload = main;
 
 let card;
+let index = -1;
 let termFace = true;
 
 function main() {
-    card = cards[Math.floor(Math.random() * cards.length)];
+    nextCard();
+}
+
+function prevCard() {
+    if(index == 0) {
+        return;
+    }
+    
+    index--;
+
+    card = sequence[index];
+    termFace = true;
+
+    FLASHCARD_TEXT.innerText = card.term;
+}
+
+function nextCard() {
+    index++;
+    if(index >= sequence.length) {
+        sequence.push(cards[Math.floor(Math.random() * cards.length)]);
+    }
+
+    card = sequence[index];
+    termFace = true;
 
     FLASHCARD_TEXT.innerText = card.term;
 }
