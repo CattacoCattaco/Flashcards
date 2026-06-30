@@ -14,8 +14,22 @@ let cards = [
 
 window.onload = main;
 
+let card;
+let termFace = true;
+
 function main() {
-    const card = cards[Math.floor(Math.random() * cards.length)];
+    card = cards[Math.floor(Math.random() * cards.length)];
 
     FLASHCARD_TEXT.innerText = card.term;
+}
+
+function flipCard() {
+    if(termFace) {
+        FLASHCARD_TEXT.innerText = card.answer;
+        termFace = false;
+    }
+    else {
+        FLASHCARD_TEXT.innerText = card.term;
+        termFace = true;
+    }
 }
