@@ -64,6 +64,20 @@ body {
   border-radius: 4vh;
   border: 1px solid black;
   padding: 0;
+  background-color: white;
+  
+}
+
+.button-row-button:hover {
+  background-color: #ddd;
+}
+
+.button-row-button:active {
+  background-color: #aaa;
+}
+
+.button-row-button:disabled {
+  background-color: #8888;
 }
 
 #prev-button {
