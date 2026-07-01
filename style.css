@@ -65,7 +65,6 @@ body {
   border: 1px solid black;
   padding: 0;
   background-color: white;
-  
 }
 
 .button-row-button:hover {
@@ -80,10 +79,53 @@ body {
   background-color: #8888;
 }
 
+.button-image {
+  width: 100%;
+  height: 100%;
+}
+
 #prev-button {
   left: 2vw;
 }
 
 #next-button {
   right: 2vw;
+}
+
+#correct-button {
+  right: calc(3vw + 8vh);
+  background-color: #0f0;
+}
+
+#correct-button:hover {
+  background-color: #0d0;
+}
+
+#correct-button:active {
+  background-color: #0a0;
+}
+
+#correct-button:disabled {
+  background-color: #0808;
+}
+
+#wrong-button {
+  right: 2vw;
+  background-color: #f00;
+}
+
+#wrong-button:hover {
+  background-color: #d00;
+}
+
+#wrong-button:active {
+  background-color: #a00;
+}
+
+#wrong-button:disabled {
+  background-color: #8008;
+}
+
+[visible="false"] {
+  display: none;
 }

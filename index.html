@@ -14,8 +14,18 @@
     <button id="flip-card-button" onclick="flipCard()"></button>
   </div>
   <div id="button-row">
-    <button class="button-row-button" id="prev-button" onclick="prevCard()"><</button>
-    <button class="button-row-button" id="next-button" onclick="nextCard()">></button>
+    <button class="button-row-button" id="prev-button" onclick="prevCard()">
+      <img src="images/prev-button.svg" class="button-image"/>
+    </button>
+    <button class="button-row-button" id="next-button" onclick="nextCard()">
+      <img src="images/next-button.svg" class="button-image"/>
+    </button>
+    <button class="button-row-button" id="correct-button" onclick="generateNewCard()">
+      <img src="images/correct-button.svg" class="button-image"/>
+    </button>
+    <button class="button-row-button" id="wrong-button" onclick="generateNewCard()">
+      <img src="images/wrong-button.svg" class="button-image"/>
+    </button>
   </div>
   <script src="script.js"></script>
 </body>

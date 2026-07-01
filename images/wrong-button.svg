@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="800"
+   height="800"
+   viewBox="0 0 211.66667 211.66667"
+   version="1.1"
+   id="svg1"
+   sodipodi:docname="wrong-button.svg"
+   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#474747"
+     inkscape:document-units="px"
+     showgrid="true"
+     inkscape:zoom="0.66909979"
+     inkscape:cx="400.53816"
+     inkscape:cy="399.79089"
+     inkscape:window-width="1920"
+     inkscape:window-height="974"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1">
+    <inkscape:grid
+       id="grid1"
+       units="px"
+       originx="0"
+       originy="0"
+       spacingx="13.229167"
+       spacingy="13.229167"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="4"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path1"
+       style="fill:#000000;stroke-width:13.22916688;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;fill-opacity:1"
+       d="M 105.83334 0 A 105.83334 105.83334 0 0 0 0 105.83334 A 105.83334 105.83334 0 0 0 105.83334 211.66667 A 105.83334 105.83334 0 0 0 211.66667 105.83334 A 105.83334 105.83334 0 0 0 105.83334 0 z M 105.83334 13.229167 A 92.604179 92.604179 0 0 1 198.4375 105.83334 A 92.604179 92.604179 0 0 1 105.83334 198.4375 A 92.604179 92.604179 0 0 1 13.229167 105.83334 A 92.604179 92.604179 0 0 1 105.83334 13.229167 z " />
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:13.2292;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 52.916668,52.916668 158.75,158.75 105.83334,105.83334 158.75,52.916668 52.916668,158.75 105.83334,105.83334 Z"
+       id="path3" />
+  </g>
+</svg>

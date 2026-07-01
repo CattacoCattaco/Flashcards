@@ -1,7 +1,9 @@
 const FLASHCARD = document.getElementById("flashcard");
 const FLASHCARD_TEXT = document.getElementById("flashcard-text");
-const NEXT_BUTTON = document.getElementById("next-button");
 const PREV_BUTTON = document.getElementById("prev-button");
+const NEXT_BUTTON = document.getElementById("next-button");
+const CORRECT_BUTTON = document.getElementById("correct-button");
+const WRONG_BUTTON = document.getElementById("wrong-button");
 
 let cards = [
     {
@@ -41,7 +43,7 @@ function reset() {
     unusedCards = cards.slice();
     sequence = [];
     index = -1;
-    nextCard();
+    generateNewCard();
     PREV_BUTTON.disabled = true;
 }
 
@@ -50,58 +52,72 @@ function prevCard() {
         return;
     }
 
+    NEXT_BUTTON.setAttribute("visible", "true");
+    CORRECT_BUTTON.setAttribute("visible", "false");
+    WRONG_BUTTON.setAttribute("visible", "false");
+
     index--;
 
-    card = sequence[index];
-    termFace = true;
-
-    FLASHCARD_TEXT.innerText = card.term;
+    displayCurrentCard();
 
     if(index == 0) {
         PREV_BUTTON.disabled = true;
     }
 }
 
-function nextCard() {
-    if(unusedCards.length < 1) {
+function generateNewCard() {
+    if(unusedCards.length == 0) {
         reset();
         return;
     }
+    
+    let newCard;
 
-    index++;
-    if(index >= sequence.length) {
-        let newCard;
-
-        if(Math.random() < reuseCardChance) {
-            console.log("Hi");
+    if(Math.random() < reuseCardChance) {
+        console.log("Hi");
+        newCard = cards[Math.floor(Math.random() * cards.length)];
+        while(card == newCard) {
             newCard = cards[Math.floor(Math.random() * cards.length)];
-            while(card == newCard) {
-                newCard = cards[Math.floor(Math.random() * cards.length)];
-            }
+        }
 
-            if(unusedCards.includes(newCard)) {
-                let index = unusedCards.indexOf(newCard);
-                console.log(unusedCards)
-                console.log(index);
-                unusedCards.splice(index, 1);
-            }
+        if(unusedCards.includes(newCard)) {
+            let index = unusedCards.indexOf(newCard);
+            console.log(unusedCards)
+            console.log(index);
+            unusedCards.splice(index, 1);
         }
-        else {
-            console.log("B");
-            let newCardIndex = Math.floor(Math.random() * unusedCards.length);
-            newCard = unusedCards[newCardIndex];
-            unusedCards.splice(newCardIndex, 1);
-        }
-        
-        sequence.push(newCard);
     }
+    else {
+        console.log("B");
+        let newCardIndex = Math.floor(Math.random() * unusedCards.length);
+        newCard = unusedCards[newCardIndex];
+        unusedCards.splice(newCardIndex, 1);
+    }
+    
+    sequence.push(newCard);
+    
+    nextCard();
+}
 
+function nextCard() {
+    index++;
+
+    displayCurrentCard();
+
+    PREV_BUTTON.disabled = false;
+
+    if(index == sequence.length - 1) {
+        NEXT_BUTTON.setAttribute("visible", "false");
+        CORRECT_BUTTON.setAttribute("visible", "true");
+        WRONG_BUTTON.setAttribute("visible", "true");
+    }
+}
+
+function displayCurrentCard() {
     card = sequence[index];
     termFace = true;
 
     FLASHCARD_TEXT.innerText = card.term;
-
-    PREV_BUTTON.disabled = false;
 }
 
 function flipCard() {
