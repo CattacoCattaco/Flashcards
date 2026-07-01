@@ -11,6 +11,14 @@ let cards = [
         term: "Does the Sun orbit the Earth?",
         answer: "False",
     },
+    {
+        term: "Is the Moon round?",
+        answer: "True",
+    },
+    {
+        term: "Is the Earth flat?",
+        answer: "False",
+    },
 ];
 
 let sequence = [];
@@ -46,7 +54,11 @@ function prevCard() {
 function nextCard() {
     index++;
     if(index >= sequence.length) {
-        sequence.push(cards[Math.floor(Math.random() * cards.length)]);
+        let newCard = cards[Math.floor(Math.random() * cards.length)];
+        while(card == newCard) {
+            newCard = cards[Math.floor(Math.random() * cards.length)];
+        }
+        sequence.push(newCard);
     }
 
     card = sequence[index];
