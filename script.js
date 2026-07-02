@@ -25,7 +25,11 @@ let cards = [
 ];
 
 let unusedCards = [];
-let reuseCardChance = 0.1;
+
+let correctCards = [];
+let incorrectCards = [];
+
+let reuseCardChance = 0.15;
 
 let sequence = [];
 
@@ -41,6 +45,8 @@ function main() {
 
 function reset() {
     unusedCards = cards.slice();
+    correctCards = [];
+    incorrectCards = [];
     sequence = [];
     index = -1;
     generateNewCard();
@@ -65,19 +71,46 @@ function prevCard() {
     }
 }
 
+function correct() {
+    for(let i = 0; i < incorrectCards.length; i++) {
+        if(incorrectCards[i] == card) {
+            incorrectCards.splice(i);
+        }
+    }
+
+    correctCards.push(card);
+    generateNewCard();
+}
+
+function incorrect() {
+    if(!incorrectCards.includes(card)) {
+        incorrectCards.push(card);
+    }
+
+    generateNewCard();
+}
+
 function generateNewCard() {
-    if(unusedCards.length == 0) {
+    if(unusedCards.length == 0 && incorrectCards.length == 0) {
         reset();
         return;
     }
     
     let newCard;
 
-    if(Math.random() < reuseCardChance) {
+    if((Math.random() < reuseCardChance || unusedCards.length == 0) && incorrectCards.length > 0) {
         console.log("Hi");
-        newCard = cards[Math.floor(Math.random() * cards.length)];
-        while(card == newCard) {
-            newCard = cards[Math.floor(Math.random() * cards.length)];
+        newCard = incorrectCards[Math.floor(Math.random() * incorrectCards.length)];
+        
+        if(incorrectCards.length > 1) {
+            while(card == newCard) {
+                newCard = incorrectCards[Math.floor(Math.random() * incorrectCards.length)];
+            }
+        }
+        else if(card == newCard) {
+            index--;
+            nextCard();
+            return;
         }
 
         if(unusedCards.includes(newCard)) {
