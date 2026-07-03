@@ -10,18 +10,22 @@ let cards = [
     {
         term: "Does the Earth orbit the Sun?",
         answer: "True",
+        guesses: 0,
     },
     {
         term: "Does the Sun orbit the Earth?",
         answer: "False",
+        guesses: 0,
     },
     {
         term: "Is the Moon round?",
         answer: "True",
+        guesses: 0,
     },
     {
         term: "Is the Earth flat?",
         answer: "False",
+        guesses: 0,
     },
 ];
 
@@ -120,6 +124,8 @@ function incorrect() {
 }
 
 function generateNewCard() {
+    card.guesses++;
+
     if(unusedCards.length == 0 && incorrectCards.length == 0) {
         reset();
         return;
