@@ -124,7 +124,9 @@ function incorrect() {
 }
 
 function generateNewCard() {
-    card.guesses++;
+    if(card) {
+        card.guesses++;
+    }
 
     if(unusedCards.length == 0 && incorrectCards.length == 0) {
         reset();
