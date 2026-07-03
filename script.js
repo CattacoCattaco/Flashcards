@@ -4,6 +4,7 @@ const PREV_BUTTON = document.getElementById("prev-button");
 const NEXT_BUTTON = document.getElementById("next-button");
 const CORRECT_BUTTON = document.getElementById("correct-button");
 const WRONG_BUTTON = document.getElementById("wrong-button");
+const RECLASSIFY_BUTTON = document.getElementById("reclassify-button");
 
 let cards = [
     {
@@ -64,6 +65,13 @@ function prevCard() {
 
     index--;
 
+    if(index == sequence.length - 2) {
+        RECLASSIFY_BUTTON.setAttribute("visible", "true");
+    }
+    else {
+        RECLASSIFY_BUTTON.setAttribute("visible", "false");
+    }
+
     displayCurrentCard();
 
     if(index == 0) {
@@ -71,15 +79,34 @@ function prevCard() {
     }
 }
 
-function correct() {
-    for(let i = 0; i < incorrectCards.length; i++) {
-        if(incorrectCards[i] == card) {
-            incorrectCards.splice(i);
+function reclassifyPrevious() {
+    if(RECLASSIFY_BUTTON.getAttribute("color") == "green") {
+        RECLASSIFY_BUTTON.setAttribute("color", "red");
+        RECLASSIFY_BUTTON.children[0].src = "images/wrong-button.svg";
+        reclassifyCard(incorrectCards, correctCards);
+    }
+    else {
+        RECLASSIFY_BUTTON.setAttribute("color", "green");
+        RECLASSIFY_BUTTON.children[0].src = "images/correct-button.svg";
+        reclassifyCard(correctCards, incorrectCards);
+    }
+}
+
+function reclassifyCard(from, to) {
+    for(let i = from.length - 1; i >= 0; i--) {
+        if(from[i] == card) {
+            from.splice(i);
         }
     }
 
-    correctCards.push(card);
+    to.push(card);
+}
+
+function correct() {
+    reclassifyCard(incorrectCards, correctCards);
     generateNewCard();
+    RECLASSIFY_BUTTON.setAttribute("color", "red");
+    RECLASSIFY_BUTTON.children[0].src = "images/wrong-button.svg";
 }
 
 function incorrect() {
@@ -88,6 +115,8 @@ function incorrect() {
     }
 
     generateNewCard();
+    RECLASSIFY_BUTTON.setAttribute("color", "green");
+    RECLASSIFY_BUTTON.children[0].src = "images/correct-button.svg";
 }
 
 function generateNewCard() {
@@ -141,8 +170,15 @@ function nextCard() {
 
     if(index == sequence.length - 1) {
         NEXT_BUTTON.setAttribute("visible", "false");
+        RECLASSIFY_BUTTON.setAttribute("visible", "false");
         CORRECT_BUTTON.setAttribute("visible", "true");
         WRONG_BUTTON.setAttribute("visible", "true");
+    }
+    else if(index == sequence.length - 2) {
+        RECLASSIFY_BUTTON.setAttribute("visible", "true");
+    }
+    else {
+        RECLASSIFY_BUTTON.setAttribute("visible", "false");
     }
 }
 

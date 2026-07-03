@@ -64,19 +64,44 @@ body {
   border-radius: 4vh;
   border: 1px solid black;
   padding: 0;
-  background-color: white;
-}
 
-.button-row-button:hover {
-  background-color: #ddd;
-}
+  background-color: #fff;
+  &[color = "green"] {
+    background-color: #0f0;
+  }
+  &[color = "red"] {
+    background-color: #f00;
+  }
 
-.button-row-button:active {
-  background-color: #aaa;
-}
+  &:hover {
+    background-color: #ddd;
+    &[color = "green"] {
+      background-color: #0d0;
+    }
+    &[color = "red"] {
+      background-color: #d00;
+    }
+  }
 
-.button-row-button:disabled {
-  background-color: #8888;
+  &:active {
+    background-color: #aaa;
+    &[color = "green"] {
+      background-color: #0a0;
+    }
+    &[color = "red"] {
+      background-color: #a00;
+    }
+  }
+
+  &:disabled {
+    background-color: #888;
+    &[color = "green"] {
+      background-color: #080;
+    }
+    &[color = "red"] {
+      background-color: #800;
+    }
+  }
 }
 
 .button-image {
@@ -94,36 +119,14 @@ body {
 
 #correct-button {
   right: calc(3vw + 8vh);
-  background-color: #0f0;
-}
-
-#correct-button:hover {
-  background-color: #0d0;
-}
-
-#correct-button:active {
-  background-color: #0a0;
-}
-
-#correct-button:disabled {
-  background-color: #0808;
 }
 
 #wrong-button {
   right: 2vw;
-  background-color: #f00;
 }
 
-#wrong-button:hover {
-  background-color: #d00;
-}
-
-#wrong-button:active {
-  background-color: #a00;
-}
-
-#wrong-button:disabled {
-  background-color: #8008;
+#reclassify-button {
+  right: calc(3vw + 8vh);
 }
 
 [visible="false"] {
