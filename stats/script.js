@@ -2,63 +2,7 @@ const GUESS_COUNTS_CHART_AREA = document.getElementById("guess-counts-chart-area
 const AVERAGE_GUESS_COUNT_LABEL = document.getElementById("average-guess-count-label");
 const CARDS_TO_FOCUS_ON_AREA = document.getElementById("cards-to-focus-on-area");
 
-let cards = [
-    {
-        term: "Does the Earth orbit the Sun?",
-        answer: "True",
-        guesses: 1,
-    },
-    {
-        term: "Does the Sun orbit the Earth?",
-        answer: "False",
-        guesses: 1,
-    },
-    {
-        term: "Is the Moon round?",
-        answer: "True",
-        guesses: 1,
-    },
-    {
-        term: "Is the Earth flat?",
-        answer: "False",
-        guesses: 1,
-    },
-    {
-        term: "How many letters are in the alphabet?",
-        answer: "26",
-        guesses: 5,
-    },
-    {
-        term: "How do you say hi in Spanish?",
-        answer: "Hola",
-        guesses: 2,
-    },
-    {
-        term: "How do you say yes in Spanish?",
-        answer: "Si",
-        guesses: 2,
-    },
-    {
-        term: "How do you say to be called in Spanish?",
-        answer: "Llamarse",
-        guesses: 4,
-    },
-    {
-        term: "How many world wars have there been?",
-        answer: "Two",
-        guesses: 3,
-    },
-    {
-        term: "How many phases of the moon are there?",
-        answer: "Eight",
-        guesses: 3,
-    },
-    {
-        term: "How do you say bathroom in Spanish?",
-        answer: "Baño",
-        guesses: 7,
-    },
-];
+let cards;
 
 let guessCountCounts = [];
 let cardsSortedByGuessCounts = [];
@@ -76,6 +20,8 @@ let cardsToFocusOnPositions = [
 window.onload = main;
 
 function main() {
+    cards = JSON.parse(sessionStorage.getItem("FC-cards"));
+
     for(let i = 0; i < cards.length; i++) {
         let card = cards[i];
         while(guessCountCounts.length < card.guesses) {
@@ -110,8 +56,13 @@ function main() {
 
     AVERAGE_GUESS_COUNT_LABEL.textContent = `Average guess count: ${averageGuessCount.toPrecision(4)}`;
 
-    let barHeight = 95 / guessCountCounts.length * 5 / 9;
-    let barMargin = 95 / guessCountCounts.length * 2 / 9;
+    let barHeightWithMargin = 95 / guessCountCounts.length;
+    if(barHeightWithMargin > 25) {
+        barHeightWithMargin = 25;
+    }
+
+    let barHeight = barHeightWithMargin * 5 / 9;
+    let barMargin = barHeightWithMargin * 2 / 9;
 
     for(let i = 0; i < guessCountCounts.length; i++) {
         let bar = document.createElement("div");
