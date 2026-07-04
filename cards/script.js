@@ -171,7 +171,6 @@ function generateNewCard() {
     let newCard;
 
     if((Math.random() < reuseCardChance || unusedCards.length == 0) && incorrectCards.length > 0) {
-        console.log("Hi");
         newCard = incorrectCards[Math.floor(Math.random() * incorrectCards.length)];
         
         if(incorrectCards.length > 1) {
@@ -180,6 +179,18 @@ function generateNewCard() {
             }
         }
         else if(card == newCard) {
+            if(unusedCards.length > 0) {
+                let newCardIndex = Math.floor(Math.random() * unusedCards.length);
+                newCard = unusedCards[newCardIndex];
+                unusedCards.splice(newCardIndex, 1);
+
+                sequence.push(newCard);
+                
+                nextCard();
+
+                return;
+            }
+
             index--;
             nextCard();
             return;
@@ -193,7 +204,6 @@ function generateNewCard() {
         }
     }
     else {
-        console.log("B");
         let newCardIndex = Math.floor(Math.random() * unusedCards.length);
         newCard = unusedCards[newCardIndex];
         unusedCards.splice(newCardIndex, 1);
