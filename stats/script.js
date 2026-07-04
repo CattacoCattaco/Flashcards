@@ -1,5 +1,6 @@
 const GUESS_COUNTS_CHART_AREA = document.getElementById("guess-counts-chart-area");
 const AVERAGE_GUESS_COUNT_LABEL = document.getElementById("average-guess-count-label");
+const CARDS_TO_FOCUS_ON_AREA = document.getElementById("cards-to-focus-on-area");
 
 let cards = [
     {
@@ -60,8 +61,17 @@ let cards = [
 ];
 
 let guessCountCounts = [];
-
 let cardsSortedByGuessCounts = [];
+let cardsToFocusOn = [];
+
+let cardsToFocusOnPositions = [
+    [],
+    ["center"],
+    ["top left", "bottom right"],
+    ["top left", "center", "bottom right"],
+    ["top left", "top right", "bottom left", "bottom right"],
+    ["top left", "top right", "center", "bottom left", "bottom right"],
+]
 
 window.onload = main;
 
@@ -125,6 +135,57 @@ function main() {
         barFG.style.setProperty("--percent", guessCountCounts[i] / cards.length * 100);
     }
 
-    console.log(guessCountCounts);
-    console.log(cardsSortedByGuessCounts);
+    for(let i = cardsSortedByGuessCounts.length - 1; i >= cardsSortedByGuessCounts.length - 5; i--) {
+        let card = cardsSortedByGuessCounts[i];
+
+        if(card.guesses > averageGuessCount) {
+            cardsToFocusOn.push(card);
+        }
+        else {
+            break;
+        }
+    }
+
+    for(let i = 0; i < cardsToFocusOn.length; i++) {
+        let card = cardsToFocusOn[i];
+
+        let flashcard = document.createElement("div");
+        flashcard.classList.add("flashcard-mini");
+        flashcard.id = `card-to-focus-on-${i}`;
+        flashcard.setAttribute("position", cardsToFocusOnPositions[cardsToFocusOn.length][i]);
+        CARDS_TO_FOCUS_ON_AREA.appendChild(flashcard);
+
+        let cardText = document.createElement("span");
+        cardText.classList.add("flashcard-text");
+        cardText.id = `card-to-focus-on-label-${i}`;
+        cardText.innerText = card.term;
+        flashcard.appendChild(cardText);
+
+        let flipCardButton = document.createElement("button");
+        flipCardButton.classList.add("flip-card-button");
+        flipCardButton.id = `card-to-focus-on-button-${i}`;
+        flashcard.setAttribute("onmouseenter", `hoverCard(${i})`);
+        flashcard.setAttribute("onmouseleave", `unhoverCard(${i})`);
+        flashcard.setAttribute("onclick", `flipCard(${i})`);
+        flashcard.appendChild(flipCardButton);
+    }
+}
+
+function hoverCard(id) {
+    document.getElementById(`card-to-focus-on-${id}`).style.setProperty("z-index", 2);
+}
+
+function unhoverCard(id) {
+    document.getElementById(`card-to-focus-on-${id}`).style.setProperty("z-index", "inherit");
+}
+
+function flipCard(id) {
+    let card = cardsToFocusOn[id];
+    let cardText = document.getElementById(`card-to-focus-on-label-${id}`);
+    if(cardText.innerText == card.term) {
+        cardText.innerText = card.answer;
+    }
+    else {
+        cardText.innerText = card.term;
+    }
 }
