@@ -1,6 +1,8 @@
 :root {
-  --flashcard-height: min(45vh, calc(3 / 5 * 40vw));
   --flashcard-width: min(40vw, calc(5 / 3 * 45vh));
+  --flashcard-height: min(45vh, calc(3 / 5 * 40vw));
+  --stats-width: min(80vw, calc(5 / 2 * 70vh));
+  --stats-height: min(70vh, calc(2 / 3 * 80vw));
 }
 
 html {
@@ -22,6 +24,94 @@ body {
   border: 2px solid black;
   border-radius: 10px;
   background-color: white;
+}
+
+#stats-area {
+  position: absolute;
+  left: calc((100vw - var(--stats-width)) / 2);
+  top: calc((100vh - var(--stats-height)) / 2);
+  width: var(--stats-width);
+  height: var(--stats-height);
+  background-color: #119;
+  border-radius: 15px;
+}
+
+#guess-counts-chart-area {
+  position: absolute;
+  left: 0;
+  top: 39px;
+  width: calc(34% - 30px);
+  height: calc(100% - 64px);
+  background-color: #319;
+  border-radius: 0 0 0 15px;
+  padding: 15px 15px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#average-guess-count-bar {
+  position: absolute;
+  left: 15px;
+  top: -34px;
+  width: calc(100% - 30px);
+  height: 34px;
+  background-color: #518;
+  border-radius: 15px 0 0 0;
+  margin: -5px -15px;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 18px;
+}
+
+#guess-count-frequency-label {
+  margin: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #feb;
+}
+
+.guess-count-bar {
+  --height: 10;
+  --margin: 3.5;
+  display: flex;
+  width: 100%;
+  height: calc(var(--height) * 1%);
+  margin: calc(var(--margin) * 1%) 0;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.guess-count-bar-label {
+  height: 100%;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #feb;
+  margin-right: 8px;
+}
+
+.guess-count-bar-bg {
+  flex-grow: 1;
+  height: 100%;
+  border-radius: 10px;
+  background-color: #9cf;
+}
+
+.guess-count-bar-fg {
+  --percent: 0;
+  flex-grow: 1;
+  width: calc(var(--percent) * 1%);
+  height: 100%;
+  border-radius: 10px;
+  background-color: #38b;
 }
 
 #flashcard-text {
