@@ -140,3 +140,17 @@ function flipCard(id) {
         cardText.innerText = card.term;
     }
 }
+
+function retrySet(id) {
+    sessionStorage.setItem("FC-cards", JSON.stringify(cards));
+    
+    const a = document.createElement('a');
+    a.href = "cards/index.html";
+    a.click();
+}
+
+function newSet(id) {
+    const a = document.createElement('a');
+    a.href = "set_creation/index.html";
+    a.click();
+}

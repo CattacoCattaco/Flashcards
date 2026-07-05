@@ -35,7 +35,7 @@ function addCard() {
     cardEdit.appendChild(answerEdit);
 
     let deleteButton = document.createElement("button");
-    deleteButton.classList.add("card-edit-delete-button");
+    deleteButton.classList.add("default-button");
     deleteButton.id = `card-edit-delete-button-${cardCount}`;
     deleteButton.innerText = "Delete";
     deleteButton.setAttribute("onclick", `deleteCard(${cardCount})`);
@@ -60,4 +60,23 @@ function deleteCard(cardIndex) {
     }
 
     cardCount--;
+}
+
+function startSet() {
+    let cards = [];
+
+    for(let i = 1; i <= cardCount; i++) {
+        let card = {
+            term: document.getElementById(`term-edit-${i}`).value,
+            answer: document.getElementById(`answer-edit-${i}`).value,
+        };
+
+        cards.push(card);
+    }
+
+    sessionStorage.setItem("FC-cards", JSON.stringify(cards));
+
+    const a = document.createElement('a');
+    a.href = "cards/index.html";
+    a.click();
 }

@@ -142,6 +142,18 @@ body {
   background-color: #38b;
 }
 
+#retry-set-button {
+  position: absolute;
+  left: calc((100vw - var(--stats-width)) / 2 + 5vw);
+  top: calc(var(--stats-height) / 2 + 51vh);
+}
+
+#new-set-button {
+  position: absolute;
+  right: calc((100vw - var(--stats-width)) / 2 + 5vw);
+  top: calc(var(--stats-height) / 2 + 51vh);
+}
+
 #cards-list-panel {
   position: absolute;
   left: calc((100vw - var(--cards-list-panel-width)) / 2);
@@ -197,31 +209,7 @@ body {
   font-size: 16px;
 }
 
-.card-edit-delete-button, #add-card-edit-button {
-  min-width: 120px;
-  margin: 3px;
-  border: 1px solid black;
-  border-radius: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  font-size: 14px;
-  color: #157;
-  background-color: #9cf;
-  
-  &:hover {
-    background-color: #5ad;
-  }
-  &:active {
-    background-color: #38b;
-    color: black;
-  }
-  &:disabled {
-    background-color: #157;
-    color: black;
-  }
-}
-
-#add-card-edit-button {
+#add-card-edit-button, #test-me-button {
   margin-bottom: 10px;
 }
 
@@ -363,6 +351,30 @@ body {
 
 #reclassify-button {
   right: calc(3vw + 8vh);
+}
+
+.default-button {
+  min-width: 120px;
+  margin: 3px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14px;
+  color: #157;
+  background-color: #9cf;
+  
+  &:hover {
+    background-color: #5ad;
+  }
+  &:active {
+    background-color: #38b;
+    color: black;
+  }
+  &:disabled {
+    background-color: #157;
+    color: black;
+  }
 }
 
 input[type="text"] {

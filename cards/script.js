@@ -6,63 +6,7 @@ const CORRECT_BUTTON = document.getElementById("correct-button");
 const WRONG_BUTTON = document.getElementById("wrong-button");
 const RECLASSIFY_BUTTON = document.getElementById("reclassify-button");
 
-let cards = [
-    {
-        term: "Does the Earth orbit the Sun?",
-        answer: "True",
-        guesses: 0,
-    },
-    {
-        term: "Does the Sun orbit the Earth?",
-        answer: "False",
-        guesses: 0,
-    },
-    {
-        term: "Is the Moon round?",
-        answer: "True",
-        guesses: 0,
-    },
-    {
-        term: "Is the Earth flat?",
-        answer: "False",
-        guesses: 0,
-    },
-    {
-        term: "How many letters are in the alphabet?",
-        answer: "26",
-        guesses: 0,
-    },
-    {
-        term: "How do you say hi in Spanish?",
-        answer: "Hola",
-        guesses: 0,
-    },
-    {
-        term: "How do you say yes in Spanish?",
-        answer: "Si",
-        guesses: 0,
-    },
-    {
-        term: "How do you say to be called in Spanish?",
-        answer: "Llamarse",
-        guesses: 0,
-    },
-    {
-        term: "How many world wars have there been?",
-        answer: "Two",
-        guesses: 0,
-    },
-    {
-        term: "How many phases of the moon are there?",
-        answer: "Eight",
-        guesses: 0,
-    },
-    {
-        term: "How do you say bathroom in Spanish?",
-        answer: "Baño",
-        guesses: 0,
-    },
-];
+let cards;
 
 let unusedCards = [];
 
@@ -80,6 +24,12 @@ let index = -1;
 let termFace = true;
 
 function main() {
+    cards = JSON.parse(sessionStorage.getItem("FC-cards"));
+
+    for(let i = 0; i < cards.length; i++) {
+        cards[i].guesses = 0;
+    }
+
     reset();
 }
 
