@@ -3,6 +3,8 @@
   --flashcard-height: min(45vh, calc(3 / 5 * 40vw));
   --stats-width: min(80vw, calc(5 / 2 * 70vh));
   --stats-height: min(70vh, calc(2 / 3 * 80vw));
+  --cards-list-panel-width: min(60vw, calc(5 / 2 * 80vh));
+  --cards-list-panel-height: min(80vh, calc(2 / 3 * 60vw));
 }
 
 html {
@@ -140,8 +142,85 @@ body {
   background-color: #38b;
 }
 
-.flashcard-mini {
+#cards-list-panel {
   position: absolute;
+  left: calc((100vw - var(--cards-list-panel-width)) / 2);
+  top: calc((100vh - var(--cards-list-panel-height)) / 2);
+  width: var(--cards-list-panel-width);
+  height: var(--cards-list-panel-height);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 15px;
+  background-color: #148;
+}
+
+#cards-list-label {
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #feb;
+  margin: 10px 0px;
+}
+
+#cards-list {
+  display: flex;
+  flex-grow: 1;
+  width: stretch;
+  height: stretch;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  overflow-y: auto;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.card-edit {
+  width: stretch;
+  height: fit-content;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #319;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+}
+
+.card-edit-label {
+  margin: 5px;
+  color: #feb;
+  font-size: 16px;
+}
+
+.card-edit-delete-button, #add-card-edit-button {
+  min-width: 120px;
+  margin: 3px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14px;
+  color: #157;
+  background-color: #9cf;
+  
+  &:hover {
+    background-color: #5ad;
+  }
+  &:active {
+    background-color: #38b;
+    color: black;
+  }
+  &:disabled {
+    background-color: #157;
+    color: black;
+  }
+}
+
+.flashcard-mini {
   width: stretch;
   max-width: 40%;
   max-height: 40%;
@@ -150,6 +229,9 @@ body {
   border-radius: 10px;
   background-color: white;
 
+  &[position] {
+    position: absolute;
+  }
   &[position ~= "left"] {
     left: 2.5%;
   }
@@ -276,6 +358,23 @@ body {
 
 #reclassify-button {
   right: calc(3vw + 8vh);
+}
+
+input[type="text"] {
+  margin: 3px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-size: 14px;
+  color: #157;
+  background-color: #9cf;
+  &:focus {
+    outline: transparent;
+  }
+  &::placeholder {
+    color: #38b;
+  }
 }
 
 [visible="false"] {
