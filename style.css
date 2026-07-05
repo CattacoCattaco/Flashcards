@@ -172,6 +172,7 @@ body {
   margin-right: 15px;
   margin-bottom: 15px;
   overflow-y: auto;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
@@ -218,6 +219,10 @@ body {
     background-color: #157;
     color: black;
   }
+}
+
+#add-card-edit-button {
+  margin-bottom: 10px;
 }
 
 .flashcard-mini {
